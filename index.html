@@ -132,15 +132,15 @@
             </div>
 
           <!-- Resumen de Resultados en formato horizontal con separación visual -->
-          <div style="margin-top: 100px;">
-              <hr style="border: 5px solid #978484; margin: 20px 0;">
-              <div class="result-summary" style="text-align: center; margin-top: 10px;">
-                  <p style="display: inline-block; margin: 10px;">OPERACIONES: <span id="operations-summary">0</span></p>
-                  <p style="display: inline-block; margin: 10px;">CANTIDAD DISPOSITIVOS: <span>6</span></p>
-                  <p style="display: inline-block; margin: 10px;">RECARGAS EN EFECTIVO: <span>$0.00</span></p>
-                  <p style="display: inline-block; margin: 10px;">USUARIOS QUE COMPRARON: <span>182</span></p>
-              </div>
-          </div>
+<div style="margin-top: 100px;">
+    <hr style="border: 5px solid #978484; margin: 20px 0;">
+    <div class="result-summary" style="text-align: center; margin-top: 10px;">
+        <p style="display: inline-block; margin: 10px; ">OPERACIONES: <span id="operations-summary">0</span></p>
+        <p style="display: inline-block; margin: 10px;">CANTIDAD DISPOSITIVOS: <span>6</span></p>
+        <p style="display: inline-block; margin: 10px;">RECARGAS EN EFECTIVO: <span>$0.00</span></p>
+        <p style="display: inline-block; margin: 10px;">USUARIOS QUE COMPRARON: <span>182</span></p>
+    </div>
+</div>
 
         </main>
         <!-- End Main -->
@@ -191,11 +191,11 @@
 
                 // Calcular el total de operaciones
                 if (totalDays > 0) {
-                    const totalOperations = totalDays * 210; // Multiplicar por 210
+                    const totalOperations = totalDays * 221; // Multiplicar por 210
                     operationsCount.textContent = totalOperations;
                     operationsSummary.textContent = totalOperations;
                 } else {
-                    operationsCount.textContent = "Seleccione un rango de fechas válido";
+                    operationsCount.textContent = "Seleccione un rango de fechas válido"; // Mensaje de error si no hay un rango válido
                     operationsSummary.textContent = "Seleccione un rango de fechas válido";
                 }
             }
