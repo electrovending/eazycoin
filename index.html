@@ -1,208 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>Iniciar sesión</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            overflow: hidden; /* Prevent scrolling during transition */
+        }
 
-    <!-- Montserrat Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        .login-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        .login-box {
+            width: 300px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+            text-align: center;
+            animation: fadeInUp 1s ease forwards;
+            transition: opacity 0.5s ease; /* Transition for fade-out effect */
+        }
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-out {
+            opacity: 0; /* Will be applied before redirect */
+        }
+
+        .logo {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: transparent;
+            color: #fff;
+            transition: border-color 0.3s, color 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #4CAF50;
+            color: #4CAF50;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #45a049;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="grid-container">
-
-        <!-- Header -->
-        <header class="header">
-            <div class="menu-icon" onclick="openSidebar()">
-                <span class="material-icons-outlined">menu</span>
-            </div>
-            <div class="header-left">
-                <span class="material-icons-outlined">search</span>
-            </div>
-            <div class="header-right">
-                <span class="material-icons-outlined">notifications</span>
-                <span class="material-icons-outlined">email</span>
-                <span class="material-icons-outlined">account_circle</span>
-            </div>
-        </header>
-        <!-- End Header -->
-
-        <!-- Sidebar -->
-        <aside id="sidebar">
-            <div class="sidebar-title">
-                <div class="sidebar-brand">
-                    <img src="images/logo_head.png" alt="Logo" style="height: 30px; vertical-align: middle; margin-right: 8px;">
+    <div class="login-container">
+        <div class="login-box" id="login-box">
+            <img src="images/logo_head.png" alt="Logo" class="logo">
+            <h2>Iniciar sesión</h2>
+            <form id="login-form" method="post" action="">
+                <div class="form-group">
+                    <label for="username">Usuario:</label>
+                    <input type="text" id="username" name="username" required>
                 </div>
-                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-            </div>
-
-            <ul class="sidebar-list">
-                <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">dashboard</span> Reportes
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">inventory_2</span> Asignaciones
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">fact_check</span> Recargas efectivo
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">add_shopping_cart</span> Dispositivos
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">shopping_cart</span> Locaciones
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">poll</span> Roles y accesos
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="#" target="_blank">
-                        <span class="material-icons-outlined">settings</span> Notificaciones
-                    </a>
-                </li>
-            </ul>
-        </aside>
-        <!-- End Sidebar -->
-
-        <!-- Main -->
-        <main class="main-container">
-            <div class="main-title">
-                <p class="font-weight-bold">RESUMEN Maquinas cafe Marlew</p>
-            </div>
-
-            <!-- Date Range Selection -->
-            <div class="date-selection">
-                <label for="start-date">Start Date:</label>
-                <input type="date" id="start-date" name="start-date">
-                
-                <label for="end-date">End Date:</label>
-                <input type="date" id="end-date" name="end-date">
-            </div>
-            <!-- End Date Range Selection -->
-
-            <div class="main-cards">
-
-                <!-- Card Operaciones con fondo verde -->
-                <div class="card" style="background-color: #e0f7e0;">
-                    <div class="card-inner">
-                        <p class="text-primary">OPERACIONES</p>
-                        <span class="material-icons-outlined text-blue">inventory_2</span>
-                    </div>
-                    <span class="text-primary font-weight-bold" id="total-operations">0</span>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
                 </div>
-
-                <div class="card">
-                    <div class="card-inner">
-                        <p class="text-primary">DISPOSITIVOS HABILITADOS</p>
-                    </div>
-                    <span class="text-primary font-weight-bold">6</span>
-                </div>
-
-                <div class="card">
-                    <div class="card-inner">
-                        <p class="text-primary">USUARIOS QUE COMPRARON</p>
-                    </div>
-                    <span class="text-primary font-weight-bold">182</span>
-                </div>
-
-                <div class="card">
-                    <div class="card-inner">
-                        <p class="text-primary">RECARGAS EFECTIVO</p>
-                    </div>
-                    <span class="text-primary font-weight-bold">$0.00</span>
-                </div>
-            </div>
-
-          <!-- Resumen de Resultados en formato horizontal con separación visual -->
-<div style="margin-top: 100px;">
-    <hr style="border: 5px solid #978484; margin: 20px 0;">
-    <div class="result-summary" style="text-align: center; margin-top: 10px;">
-        <p style="display: inline-block; margin: 10px; ">OPERACIONES: <span id="operations-summary">0</span></p>
-        <p style="display: inline-block; margin: 10px;">CANTIDAD DISPOSITIVOS: <span>6</span></p>
-        <p style="display: inline-block; margin: 10px;">RECARGAS EN EFECTIVO: <span>$0.00</span></p>
-        <p style="display: inline-block; margin: 10px;">USUARIOS QUE COMPRARON: <span>182</span></p>
-    </div>
-</div>
-
-        </main>
-        <!-- End Main -->
-
+                <button type="submit" name="submit" class="login-button">Iniciar sesión</button>
+            </form>
+            <div class="error-message" id="error-message"></div>
+        </div>
     </div>
 
-    <!-- Footer -->
-    <footer style="width: 100%; padding: 20px; background-color: #f9f9f9; color: #333; text-align: center; position: relative; bottom: 0;">
-        <p style="margin: 0;">© Copyright EazyCoin Corp. All Rights Reserved.</p>
-        <p style="margin: 5px 0;">Powered by EazyCoin Corp.</p>
-        <img src="images/logo_head.png" alt="Logo" style="height: 30px; margin-top: 8px;">
-    </footer>
-    <!-- End Footer -->
-
-    <!-- Scripts -->
-    <!-- ApexCharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
-    <!-- Custom JS -->
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const startDateInput = document.getElementById("start-date");
-            const endDateInput = document.getElementById("end-date");
-            const operationsCount = document.getElementById("total-operations");
-            const operationsSummary = document.getElementById("operations-summary");
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("login-form").addEventListener("submit", function(event) {
+                event.preventDefault();
 
-            function isWeekend(date) {
-                const day = date.getDay(); // 0 = Sunday, 6 = Saturday
-                return day === 0 || day === 6;
-            }
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
 
-            function updateOperationsCount() {
-                const startDate = new Date(startDateInput.value);
-                const endDate = new Date(endDateInput.value);
-                
-                if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-                    operationsCount.textContent = "Seleccione un rango de fechas válido";
-                    operationsSummary.textContent = "Seleccione un rango de fechas válido";
-                    return;
-                }
+                if (username === "1" && password === "1") {
+                    // Fade out the login box before redirecting
+                    var loginBox = document.getElementById("login-box");
+                    loginBox.classList.add("fade-out");
 
-                // Calcular la cantidad de días hábiles (excluyendo sábados y domingos)
-                let totalDays = 0;
-                for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
-                    if (!isWeekend(date)) {
-                        totalDays++;
-                    }
-                }
-
-                // Calcular el total de operaciones
-                if (totalDays > 0) {
-                    const totalOperations = totalDays * 221; // Multiplicar por 210
-                    operationsCount.textContent = totalOperations;
-                    operationsSummary.textContent = totalOperations;
+                    // Simulate a delay for the fade-out effect
+                    setTimeout(function() {
+                        window.location.href = "index2.html";
+                    }, 500); // Wait for the fade-out effect to complete
                 } else {
-                    operationsCount.textContent = "Seleccione un rango de fechas válido"; // Mensaje de error si no hay un rango válido
-                    operationsSummary.textContent = "Seleccione un rango de fechas válido";
+                    var errorMessage = document.getElementById("error-message");
+                    errorMessage.style.display = "block";
+                    errorMessage.textContent = "Usuario o contraseña incorrectos. Por favor, inténtelo de nuevo.";
                 }
-            }
-
-            // Escuchar cambios en los campos de fecha para actualizar el conteo de operaciones
-            startDateInput.addEventListener("change", updateOperationsCount);
-            endDateInput.addEventListener("change", updateOperationsCount);
+            });
         });
     </script>
 </body>

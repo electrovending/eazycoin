@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="grid-container">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="menu-icon" onclick="openSidebar()">
+                <span class="material-icons-outlined">menu</span>
+            </div>
+            <div class="header-left">
+                <span class="material-icons-outlined">search</span>
+            </div>
+            <div class="header-right">
+                <span class="material-icons-outlined">notifications</span>
+                <span class="material-icons-outlined">email</span>
+                <span class="material-icons-outlined">account_circle</span>
+            </div>
+        </header>
+        <!-- End Header -->
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="sidebar-title">
+                <div class="sidebar-brand">
+                    <img src="images/logo_head.png" alt="Logo" style="height: 30px; vertical-align: middle; margin-right: 8px;">
+                </div>
+                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+            </div>
+
+            <ul class="sidebar-list">
+                <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">dashboard</span> Reportes
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">inventory_2</span> Asignaciones
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">fact_check</span> Recargas efectivo
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">add_shopping_cart</span> Dispositivos
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">shopping_cart</span> Locaciones
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">poll</span> Roles y accesos
+                    </a>
+                </li>
+                <li class="sidebar-list-item">
+                    <a href="#" target="_blank">
+                        <span class="material-icons-outlined">settings</span> Notificaciones
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <!-- End Sidebar -->
+
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-title">
+                <p class="font-weight-bold">RESUMEN Maquinas cafe Marlew</p>
+            </div>
+
+            <!-- Date Range Selection -->
+            <div class="date-selection">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start-date">
+                
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end-date">
+            </div>
+            <!-- End Date Range Selection -->
+
+            <div class="main-cards">
+
+                <!-- Card Operaciones con fondo verde -->
+                <div class="card" style="background-color: #e0f7e0;">
+                    <div class="card-inner">
+                        <p class="text-primary">OPERACIONES</p>
+                        <span class="material-icons-outlined text-blue">inventory_2</span>
+                    </div>
+                    <span class="text-primary font-weight-bold" id="total-operations">0</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <p class="text-primary">DISPOSITIVOS HABILITADOS</p>
+                    </div>
+                    <span class="text-primary font-weight-bold">6</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <p class="text-primary">USUARIOS QUE COMPRARON</p>
+                    </div>
+                    <span class="text-primary font-weight-bold">182</span>
+                </div>
+
+                <div class="card">
+                    <div class="card-inner">
+                        <p class="text-primary">RECARGAS EFECTIVO</p>
+                    </div>
+                    <span class="text-primary font-weight-bold">$0.00</span>
+                </div>
+            </div>
+
+          <!-- Resumen de Resultados en formato horizontal con separación visual -->
+<div style="margin-top: 100px;">
+    <hr style="border: 5px solid #978484; margin: 20px 0;">
+    <div class="result-summary" style="text-align: center; margin-top: 10px;">
+        <p style="display: inline-block; margin: 10px; ">OPERACIONES: <span id="operations-summary">0</span></p>
+        <p style="display: inline-block; margin: 10px;">CANTIDAD DISPOSITIVOS: <span>6</span></p>
+        <p style="display: inline-block; margin: 10px;">RECARGAS EN EFECTIVO: <span>$0.00</span></p>
+        <p style="display: inline-block; margin: 10px;">USUARIOS QUE COMPRARON: <span>182</span></p>
+    </div>
+</div>
+
+        </main>
+        <!-- End Main -->
+
+    </div>
+
+    <!-- Footer -->
+    <footer style="width: 100%; padding: 20px; background-color: #f9f9f9; color: #333; text-align: center; position: relative; bottom: 0;">
+        <p style="margin: 0;">© Copyright EazyCoin Corp. All Rights Reserved.</p>
+        <p style="margin: 5px 0;">Powered by EazyCoin Corp.</p>
+        <img src="images/logo_head.png" alt="Logo" style="height: 30px; margin-top: 8px;">
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const startDateInput = document.getElementById("start-date");
+            const endDateInput = document.getElementById("end-date");
+            const operationsCount = document.getElementById("total-operations");
+            const operationsSummary = document.getElementById("operations-summary");
+
+            function isWeekend(date) {
+                const day = date.getDay(); // 0 = Sunday, 6 = Saturday
+                return day === 0 || day === 6;
+            }
+
+            function updateOperationsCount() {
+                const startDate = new Date(startDateInput.value);
+                const endDate = new Date(endDateInput.value);
+                
+                if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+                    operationsCount.textContent = "Seleccione un rango de fechas válido";
+                    operationsSummary.textContent = "Seleccione un rango de fechas válido";
+                    return;
+                }
+
+                // Calcular la cantidad de días hábiles (excluyendo sábados y domingos)
+                let totalDays = 0;
+                for (let date = new Date(startDate); date <= endDate; date.setDate(date.getDate() + 1)) {
+                    if (!isWeekend(date)) {
+                        totalDays++;
+                    }
+                }
+
+                // Calcular el total de operaciones
+                if (totalDays > 0) {
+                    const totalOperations = totalDays * 221; // Multiplicar por 210
+                    operationsCount.textContent = totalOperations;
+                    operationsSummary.textContent = totalOperations;
+                } else {
+                    operationsCount.textContent = "Seleccione un rango de fechas válido"; // Mensaje de error si no hay un rango válido
+                    operationsSummary.textContent = "Seleccione un rango de fechas válido";
+                }
+            }
+
+            // Escuchar cambios en los campos de fecha para actualizar el conteo de operaciones
+            startDateInput.addEventListener("change", updateOperationsCount);
+            endDateInput.addEventListener("change", updateOperationsCount);
+        });
+    </script>
+</body>
+</html>
